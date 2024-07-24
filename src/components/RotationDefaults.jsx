@@ -13,11 +13,11 @@ export function RotationDefaults() {
       />
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px]">
         <p>Kind Left</p>
-        <CustomSnippet imgVariant={3} />
+        <CustomSnippet imgVariant={3} width={"w-[80%]"} />
       </ShadowDiv>
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px]">
         <p>Kind Right</p>
-        <CustomSnippet imgVariant={1} />
+        <CustomSnippet imgVariant={1} width={"w-[80%]"} />
       </ShadowDiv>
       <Divider className="row-start-3 col-span-full" />
       <img
@@ -26,11 +26,11 @@ export function RotationDefaults() {
       />
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px] row-start-4">
         <p>Kind Left</p>
-        <CustomSnippet imgVariant={1} />
+        <CustomSnippet imgVariant={1} width={"w-[80%]"} />
       </ShadowDiv>
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px] row-start-5">
         <p>Kind Right</p>
-        <CustomSnippet imgVariant={3} />
+        <CustomSnippet imgVariant={3} width={"w-[80%]"} />
       </ShadowDiv>
     </ShadowDiv>
   );

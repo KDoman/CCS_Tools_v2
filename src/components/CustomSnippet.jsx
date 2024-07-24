@@ -1,12 +1,12 @@
 import { Snippet } from "@nextui-org/react";
 import { getCorrectSVG } from "../helpers/getCorrectSVG";
 
-export function CustomSnippet({ children, width = "10rem", imgVariant }) {
+export function CustomSnippet({ children, width, imgVariant }) {
   const svgSrc = getCorrectSVG(imgVariant);
   return (
     <Snippet
-      symbol={<img src={svgSrc} className="max-w-[1.4rem]" />}
-      className={`w-[${width}]`}
+      symbol={<img src={svgSrc} className="max-w-[1.3rem]" />}
+      className={`${width}`}
     >
       {children}
     </Snippet>

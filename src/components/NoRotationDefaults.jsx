@@ -9,12 +9,12 @@ export function NoRotationDefault() {
       <img src={NO_ROTATION_KIND_LEFT} />
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px]">
         <p>Kind Left</p>
-        <CustomSnippet width={"10rem"} imgVariant={1} />
+        <CustomSnippet width={"w-[80%]"} imgVariant={1} />
       </ShadowDiv>
       <img src={NO_ROTATION_KIND_RIGHT} />
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px]">
         <p>Kind Right</p>
-        <CustomSnippet width={"10rem"} imgVariant={1} />
+        <CustomSnippet width={"w-[80%]"} imgVariant={1} />
       </ShadowDiv>
     </ShadowDiv>
   );
