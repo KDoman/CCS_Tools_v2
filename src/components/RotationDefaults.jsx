@@ -9,7 +9,7 @@ export function RotationDefaults() {
     <ShadowDiv className=" grid grid-cols-2 grid-rows-5 gap-5 p-10 place-items-center max-w-[800px] mx-auto">
       <img
         src={ROTATION_KIND_LEFT}
-        className="col-start-1 row-start-1 row-end-3"
+        className="col-start-1 row-start-1 row-end-3 w-[150px]"
       />
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px]">
         <p>Kind Left</p>
@@ -22,7 +22,7 @@ export function RotationDefaults() {
       <Divider className="row-start-3 col-span-full" />
       <img
         src={ROTATION_KIND_RIGHT}
-        className="col-start-1 row-start-4 row-span-full"
+        className="col-start-1 row-start-4 row-span-full w-[150px]"
       />
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px] row-start-4">
         <p>Kind Left</p>

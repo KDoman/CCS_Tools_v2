@@ -16,19 +16,19 @@ export function ManualMeasurements() {
       <Input
         type="number"
         label="X"
-        className="max-h-[40px]"
+        size="sm"
         isDisabled={!isManualMeasurementsOn}
       />
       <Input
         type="number"
         label="Y"
-        className="max-h-[40px]"
+        size="sm"
         isDisabled={!isManualMeasurementsOn}
       />
       <Input
         type="number"
         label="Z"
-        className="max-h-[40px]"
+        size="sm"
         isDisabled={!isManualMeasurementsOn}
       />
       <Button isDisabled={!isManualMeasurementsOn}>Calculate</Button>

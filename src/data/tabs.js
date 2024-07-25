@@ -2,7 +2,7 @@ import CALCULATOR_ICON from "../assets/calc.svg";
 import CONVERTER_ICON from "../assets/converter.svg";
 import HOME_ICON from "../assets/home.svg";
 import ICON_AND_THUMB_ICON from "../assets/icon.svg";
-import ERROR_ICON from "../assets/error.svg";
+import GHOST_ICON from "../assets/ghost.svg";
 
 export const TABS = [
   { id: "homepage", label: "HomePage", img: HOME_ICON, path: "/" },
@@ -27,7 +27,7 @@ export const TABS = [
   {
     id: "ghost",
     label: "Ghost (in progress)",
-    img: ERROR_ICON,
+    img: GHOST_ICON,
     path: "/Ghost",
   },
 ];
@@ -54,7 +54,7 @@ export const TABS_WITHOUT_HOMEPAGE = [
   {
     id: "ghost",
     label: "Ghost (in progress)",
-    img: ERROR_ICON,
+    img: GHOST_ICON,
     path: "/Ghost",
   },
 ];

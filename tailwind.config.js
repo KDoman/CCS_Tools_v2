@@ -1,4 +1,4 @@
-const { nextui } = require("@nextui-org/react");
+import { nextui } from "@nextui-org/react";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -8,7 +8,11 @@ export default {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "bounce-slow": "bounce 3s linear infinite",
+      },
+    },
   },
   darkMode: "class",
   plugins: [

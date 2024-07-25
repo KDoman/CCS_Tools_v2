@@ -5,7 +5,7 @@ import { Button } from "@nextui-org/react";
 export function FullMeasurements() {
   return (
     <DivCardMeasurements>
-      <Input type="number" label="Full Measurements" />
+      <Input type="text" label="Full Measurements" size="sm" />
       <Button>Calculate</Button>
     </DivCardMeasurements>
   );
