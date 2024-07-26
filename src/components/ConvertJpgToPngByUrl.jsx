@@ -9,6 +9,7 @@ import { ErrorMessage } from "./ErrorMessage";
 export function ConvertJpgToPngByUrl({
   isConvertedByFile,
   setIsConvertedByURL,
+  fileName,
 }) {
   const [url, setUrl] = useState("");
   const [urlImage, isLoading] = useGetPngFromUrl(url);
@@ -55,7 +56,7 @@ export function ConvertJpgToPngByUrl({
         ) : urlImage ? (
           <Button
             isDisabled={isLoading}
-            onClick={() => getPngDownloadedImage(urlImage)}
+            onClick={() => getPngDownloadedImage(urlImage, fileName)}
           >
             Download Png
           </Button>

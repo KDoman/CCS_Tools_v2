@@ -9,6 +9,7 @@ import PNG_ICON from "../assets/png.svg";
 export function ConvertJpgToPngByFile({
   setIsConvertedByFile,
   isConvertedByURL,
+  fileName,
 }) {
   const [pngUrl, convertJpgToPng, isLoading, isError] =
     useGetJpgToPngByFile(setIsConvertedByFile);
@@ -40,7 +41,7 @@ export function ConvertJpgToPngByFile({
             pngUrl && (
               <Button
                 isDisabled={isLoading}
-                onClick={() => getPngDownloadedImage(pngUrl)}
+                onClick={() => getPngDownloadedImage(pngUrl, fileName)}
               >
                 Download Png
               </Button>
