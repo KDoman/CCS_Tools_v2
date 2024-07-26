@@ -12,7 +12,6 @@ export const useGetJpgToPngByFile = (setIsConvertedByFile) => {
     setIsConvertedByFile(true);
     const file = event.target.files[0];
     const reader = new FileReader();
-
     reader.onload = (e) => {
       try {
         const img = new Image();

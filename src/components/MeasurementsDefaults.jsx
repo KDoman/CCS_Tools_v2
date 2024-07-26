@@ -6,7 +6,7 @@ import { useState } from "react";
 import RULER from "../assets/ruler.svg";
 import { MeasurementsDefaultsModal } from "./MeasurementsDefaultsModal";
 
-export function MeasurementsDefaults() {
+export function MeasurementsDefaults({ valueX, valueZ }) {
   const [isRotationOn, setIsRotationOn] = useState(false);
   return (
     <>
@@ -23,7 +23,11 @@ export function MeasurementsDefaults() {
         </Switch>
         <MeasurementsDefaultsModal />
       </div>
-      {!isRotationOn ? <NoRotationDefault /> : <RotationDefaults />}
+      {!isRotationOn ? (
+        <NoRotationDefault valueX={valueX} />
+      ) : (
+        <RotationDefaults valueX={valueX} valueZ={valueZ} />
+      )}
     </>
   );
 }
