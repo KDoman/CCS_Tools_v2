@@ -1,5 +1,5 @@
 import { Button, Divider, Progress } from "@nextui-org/react";
-import { useGetJpgToPngByFile } from "../hooks/useGetJpgToPngByFile";
+import { useGetUrlFromFile } from "../hooks/useGetUrlFromFile";
 import { getPngDownloadedImage } from "../helpers/getPngDownloadedImage";
 import { H1Component } from "./H1Component";
 import { UploadFileDiv } from "./UploadFileDiv";
@@ -11,8 +11,8 @@ export function ConvertJpgToPngByFile({
   isConvertedByURL,
   fileName,
 }) {
-  const [pngUrl, convertJpgToPng, isLoading, isError] =
-    useGetJpgToPngByFile(setIsConvertedByFile);
+  const [pngUrl, readFileInput, isLoading, isError] =
+    useGetUrlFromFile(setIsConvertedByFile);
 
   return (
     <>
@@ -24,10 +24,7 @@ export function ConvertJpgToPngByFile({
         <H1Component icon={PNG_ICON} customIconWidht={2.8}>
           Convert by PNG
         </H1Component>
-        <UploadFileDiv
-          onChange={convertJpgToPng}
-          isDisabled={isConvertedByURL}
-        />
+        <UploadFileDiv onChange={readFileInput} isDisabled={isConvertedByURL} />
         <div className="flex justify-center items-center my-10 w-1/2 mx-auto">
           {isLoading ? (
             <Progress
@@ -39,15 +36,20 @@ export function ConvertJpgToPngByFile({
             />
           ) : (
             pngUrl && (
-              <Button
-                isDisabled={isLoading}
-                onClick={() => getPngDownloadedImage(pngUrl, fileName)}
-              >
-                Download Png
-              </Button>
+              <>
+                {isError ? (
+                  <ErrorMessage>Error, invalid file type</ErrorMessage>
+                ) : (
+                  <Button
+                    isDisabled={isLoading}
+                    onClick={() => getPngDownloadedImage(pngUrl, fileName)}
+                  >
+                    Download Png
+                  </Button>
+                )}
+              </>
             )
           )}
-          {isError && <ErrorMessage>Error, invalid file type</ErrorMessage>}
         </div>
         <Divider />
       </div>

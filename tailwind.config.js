@@ -18,12 +18,7 @@ export default {
   plugins: [
     nextui({
       themes: {
-        light: {
-          // ...
-          colors: {
-            primary: "var(--black-color)",
-          },
-        },
+        light: {},
       },
     }),
   ],

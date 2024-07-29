@@ -1,16 +1,17 @@
 import { useState } from "react";
 
-export const useGetJpgToPngByFile = (setIsConvertedByFile) => {
+export const useGetUrlFromFile = (setIsConvertedByFile) => {
   const [pngUrl, setPngUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const convertJpgToPng = (event) => {
+  const readFileInput = (event) => {
     setIsError(false);
     setPngUrl(null);
     setIsLoading(true);
-    setIsConvertedByFile(true);
+    setIsConvertedByFile ? setIsConvertedByFile(true) : "";
     const file = event.target.files[0];
+    setPngUrl(file);
     const reader = new FileReader();
     reader.onload = (e) => {
       try {
@@ -49,5 +50,5 @@ export const useGetJpgToPngByFile = (setIsConvertedByFile) => {
     reader.readAsDataURL(file);
   };
 
-  return [pngUrl, convertJpgToPng, isLoading, isError];
+  return [pngUrl, readFileInput, isLoading, isError];
 };
