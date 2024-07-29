@@ -26,6 +26,7 @@ export function FullMeasurements({
         label="Full Measurements"
         size="sm"
         onChange={(e) => onInputChange(e.target.value)}
+        description={'E.g.  84" w x 45" d x 33 h"'}
       />
       <Button onClick={calculateMeasurements}>Calculate</Button>
     </DivCardMeasurements>

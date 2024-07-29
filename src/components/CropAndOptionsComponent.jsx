@@ -1,20 +1,24 @@
-import { Divider, Input, Slider } from "@nextui-org/react";
+import { Divider, Input, Slider, Switch } from "@nextui-org/react";
 import { CropComponent } from "./CropComponent";
+import { IconAndThumbnailButtons } from "./IconAndThumbnailButtons";
 import { H1Component } from "./H1Component";
 import OPTIONS_LOGO from "../assets/options.svg";
-import { IconAndThumbnailButtons } from "./IconAndThumbnailButtons";
 import { useRef, useState } from "react";
 
-export function ShowIconAndThumbnailOptionsComponent({ pngUrl }) {
+export function CropAndOptionsComponent({ pngUrl, urlImage }) {
   const [pngName, setPngName] = useState("");
   const [scale, setScale] = useState(1);
   const previewCanvasRef = useRef(null);
+  const [transparentBg, setTransparentBg] = useState(true);
+
   return (
     <>
       <CropComponent
         pngUrl={pngUrl}
+        urlImage={urlImage}
         scale={scale}
         previewCanvasRef={previewCanvasRef}
+        transparentBg={transparentBg}
       />
       <Divider />
       <H1Component icon={OPTIONS_LOGO} customIconWidht="3">
@@ -30,6 +34,13 @@ export function ShowIconAndThumbnailOptionsComponent({ pngUrl }) {
         color="foreground"
         onChange={(e) => setScale(e)}
       />
+      <Switch
+        className="flex mx-auto"
+        color="success"
+        onChange={() => setTransparentBg((prev) => !prev)}
+      >
+        White background
+      </Switch>
       <Input
         type="text"
         label="File name (optional)"

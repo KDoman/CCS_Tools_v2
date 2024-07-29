@@ -1,10 +1,9 @@
-const TO_RADIANS = Math.PI / 180;
-
 export async function getCanvasPreview(
   image,
   canvas,
   crop,
   scale = 1,
+  transparentBg,
   rotate = 0
 ) {
   const ctx = canvas.getContext("2d");
@@ -24,10 +23,14 @@ export async function getCanvasPreview(
   ctx.scale(pixelRatio, pixelRatio);
   ctx.imageSmoothingQuality = "high";
 
+  transparentBg ? (ctx.fillStyle = "transparent") : (ctx.fillStyle = "white");
+
+  ctx.fillRect(0, 0, 10000, 10000);
+
   const cropX = crop.x * scaleX;
   const cropY = crop.y * scaleY;
 
-  const rotateRads = rotate * TO_RADIANS;
+  const rotateRads = rotate * (Math.PI / 180);
   const centerX = image.naturalWidth / 2;
   const centerY = image.naturalHeight / 2;
 

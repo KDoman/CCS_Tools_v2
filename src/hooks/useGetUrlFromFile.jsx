@@ -50,5 +50,5 @@ export const useGetUrlFromFile = (setIsConvertedByFile) => {
     reader.readAsDataURL(file);
   };
 
-  return [pngUrl, readFileInput, isLoading, isError];
+  return [pngUrl, readFileInput, isLoading, isError, setPngUrl];
 };

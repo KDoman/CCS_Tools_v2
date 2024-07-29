@@ -1,27 +1,17 @@
 import { useState, useRef } from "react";
-
-import ReactCrop, { centerCrop, makeAspectCrop } from "react-image-crop";
+import ReactCrop from "react-image-crop";
 import { getCanvasPreview } from "../helpers/getCanvasPreview";
+import { getCenterAspectCrop } from "../helpers/getCenterAspectCrop";
 import { useDebounceEffect } from "../hooks/useDebounceEffect";
 import "react-image-crop/dist/ReactCrop.css";
 
-function centerAspectCrop(mediaWidth, mediaHeight, aspect) {
-  return centerCrop(
-    makeAspectCrop(
-      {
-        unit: "%",
-        width: 100,
-      },
-      aspect,
-      mediaWidth,
-      mediaHeight
-    ),
-    mediaWidth,
-    mediaHeight
-  );
-}
-
-export function CropComponent({ pngUrl, scale, previewCanvasRef }) {
+export function CropComponent({
+  pngUrl,
+  scale,
+  previewCanvasRef,
+  transparentBg,
+  urlImage,
+}) {
   const imgRef = useRef(null);
   const [crop, setCrop] = useState();
   const [completedCrop, setCompletedCrop] = useState();
@@ -29,7 +19,7 @@ export function CropComponent({ pngUrl, scale, previewCanvasRef }) {
 
   function onImageLoad(e) {
     const { width, height } = e.currentTarget;
-    setCrop(centerAspectCrop(width, height, aspect));
+    setCrop(getCenterAspectCrop(width, height, aspect));
   }
 
   useDebounceEffect(
@@ -44,18 +34,19 @@ export function CropComponent({ pngUrl, scale, previewCanvasRef }) {
           imgRef.current,
           previewCanvasRef.current,
           completedCrop,
-          scale
+          scale,
+          transparentBg
         );
       }
     },
     100,
-    [completedCrop, scale]
+    [completedCrop, scale, transparentBg, pngUrl, urlImage]
   );
 
   return (
     <>
-      {!!pngUrl && (
-        <div className="flex flex-col justify-evenly max-w-full items-center bg-zinc-200 p-4 gap-4">
+      {pngUrl && (
+        <div className="flex justify-evenly max-w-full items-center bg-zinc-200 p-4 gap-4">
           <ReactCrop
             crop={crop}
             onChange={(_, percentCrop) => setCrop(percentCrop)}
@@ -65,10 +56,10 @@ export function CropComponent({ pngUrl, scale, previewCanvasRef }) {
             <img
               ref={imgRef}
               alt="Crop me"
-              src={pngUrl}
+              src={urlImage ? urlImage : pngUrl}
               style={{
                 transform: `scale(${scale})`,
-                maxWidth: "42rem",
+                maxWidth: "25rem",
               }}
               onLoad={onImageLoad}
             />
@@ -77,9 +68,10 @@ export function CropComponent({ pngUrl, scale, previewCanvasRef }) {
             <canvas
               ref={previewCanvasRef}
               style={{
-                objectFit: "contain",
+                objectFit: "cover",
                 width: completedCrop.width,
                 height: completedCrop.height,
+                border: "2px solid black",
               }}
             />
           )}
