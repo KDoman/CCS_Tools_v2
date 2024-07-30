@@ -21,5 +21,5 @@ Ta zakładka pozwala na tworzenie wycinków obrazów oraz zmianę ich rozdzielcz
 W przyszłości ta zakładka będzie odpowiedzialna za generowanie plików w formacie .obj, które będą posiadały zmniejszoną ilośc wierzchołków, tym samym zmiejszony rozmiar, aby skrócić czas ładowania w systemie
 #
 
-# Link: (w przyszłości tutaj)
-##https://csstools-kacper-projects.vercel.app/
+# Link: https://csstools-kacper-projects.vercel.app/
+
