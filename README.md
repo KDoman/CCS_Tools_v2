@@ -41,3 +41,14 @@ In the future, this tab will be responsible for generating .obj files with a red
 
 # Link: https://csstools-kacper-projects.vercel.app/
 
+
+# Tech :
+ <div align="left">
+  <img src="https://skillicons.dev/icons?i=react" height="40" alt="react logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=tailwind" height="40" alt="tailwindcss logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=vite" height="40" alt="vite logo"  />
+</div>
+
+###
