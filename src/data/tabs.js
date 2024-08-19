@@ -25,12 +25,12 @@ export const TABS = [
     img: CONVERTER_ICON,
     path: "/Jpg_to_png",
   },
-  {
-    id: "ghost",
-    label: "Ghost (in progress)",
-    img: GHOST_ICON,
-    path: "/Ghost",
-  },
+  // {
+  //   id: "ghost",
+  //   label: "Ghost (in progress)",
+  //   img: GHOST_ICON,
+  //   path: "/Ghost",
+  // },
   {
     id: "transform_importer",
     label: "Transform Importer",
@@ -58,12 +58,12 @@ export const TABS_WITHOUT_HOMEPAGE = [
     img: CONVERTER_ICON,
     path: "/Jpg_to_png",
   },
-  {
-    id: "ghost",
-    label: "Ghost (in progress)",
-    img: GHOST_ICON,
-    path: "/Ghost",
-  },
+  // {
+  //   id: "ghost",
+  //   label: "Ghost (in progress)",
+  //   img: GHOST_ICON,
+  //   path: "/Ghost",
+  // },
   {
     id: "transform_importer",
     label: "Transform Importer",
