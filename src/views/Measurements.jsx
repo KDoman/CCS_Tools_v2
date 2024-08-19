@@ -16,7 +16,8 @@ export function Measurements() {
   return (
     <div className="mb-10 relative">
       <H1Component icon={CALC_ICON}>Measurements</H1Component>
-      <div className="grid grid-cols-[repeat(2,minmax(200px,1fr))] grid-rows-2 gap-y-10">
+      <Divider />
+      <div className="grid grid-cols-[repeat(2,minmax(200px,1fr))] grid-rows-2 gap-y-10 mt-10">
         <FullMeasurements
           fullValue={fullValue}
           setFullValue={setFullValue}

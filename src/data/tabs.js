@@ -2,8 +2,9 @@ import CALCULATOR_ICON from "../assets/calc.svg";
 import CONVERTER_ICON from "../assets/converter.svg";
 import HOME_ICON from "../assets/home.svg";
 import ICON_AND_THUMB_ICON from "../assets/icon.svg";
-import GHOST_ICON from "../assets/ghost.svg";
+// import GHOST_ICON from "../assets/ghost.svg";
 import TRANSFORM_IMPORTER_ICON from "../assets/transform_importer.svg";
+import CAMERA from "../assets/camera.svg";
 
 export const TABS = [
   { id: "homepage", label: "HomePage", img: HOME_ICON, path: "/" },
@@ -37,6 +38,12 @@ export const TABS = [
     img: TRANSFORM_IMPORTER_ICON,
     path: "/Transform_importer",
   },
+  {
+    id: "siloshot_generator",
+    label: "Siloshot generator",
+    img: CAMERA,
+    path: "/Siloshot_generator",
+  },
 ];
 
 export const TABS_WITHOUT_HOMEPAGE = [
@@ -69,5 +76,11 @@ export const TABS_WITHOUT_HOMEPAGE = [
     label: "Transform Importer",
     img: TRANSFORM_IMPORTER_ICON,
     path: "/Transform_importer",
+  },
+  {
+    id: "siloshot_generator",
+    label: "Siloshot generator",
+    img: CAMERA,
+    path: "/Siloshot_generator",
   },
 ];

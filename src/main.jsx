@@ -12,6 +12,7 @@ import { Ghost } from "./views/Ghost.jsx";
 import { StaticView } from "./components/StaticView.jsx";
 import { HomePage } from "./views/HomePage.jsx";
 import { TransformImporter } from "./views/TransformImporter.jsx";
+import { SiloshotGenerator } from "./views/SiloshotGenerator.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: "Jpg_to_png", element: <JpgToPng /> },
       { path: "Ghost", element: <Ghost /> },
       { path: "Transform_importer", element: <TransformImporter /> },
+      { path: "Siloshot_generator", element: <SiloshotGenerator /> },
     ],
   },
 ]);

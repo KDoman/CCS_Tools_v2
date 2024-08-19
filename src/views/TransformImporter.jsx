@@ -7,7 +7,7 @@ import { Input } from "@nextui-org/input";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { SuccessMessage } from "../components/SuccessMessage";
 import { motion, AnimatePresence } from "framer-motion";
-import { Spinner } from "@nextui-org/react";
+import { Divider, Spinner } from "@nextui-org/react";
 import { useClearNotation } from "../hooks/useClearNotation";
 
 export const TransformImporter = () => {
@@ -26,7 +26,7 @@ export const TransformImporter = () => {
     const selectedFile = event.target.files[0];
 
     if (!selectedFile || !selectedFile.size) {
-      setIsError("Pusty plik, spróbuj jeszcze");
+      setIsError("Empty file");
       setIsButtonDisabled(true);
       return;
     }
@@ -47,7 +47,7 @@ export const TransformImporter = () => {
 
   const handleSubmit = async () => {
     if (!file || !username || !password) {
-      setIsError("Sprawdź dane logowania oraz plik");
+      setIsError("Check login credentials");
       return;
     }
 
@@ -74,13 +74,13 @@ export const TransformImporter = () => {
         setUsername("");
         setPassword("");
       } else if (response.status === 420) {
-        setIsError("Błąd logowania, spróbuj jeszcze raz");
+        setIsError("Login error, try again");
         return;
       } else if (response.status === 503) {
-        alert("Błąd serwera, skontaktuj się z developerem");
+        alert("Server error, please contact with developer");
       }
     } catch (err) {
-      alert("Błąd serwera, skontaktuj się z developerem");
+      alert("Server error, please contact with developer");
     } finally {
       setIsFileUploading(false);
     }
@@ -91,6 +91,7 @@ export const TransformImporter = () => {
       <H1Component icon={TRANSFORM_IMPORTER_ICON}>
         Transform Importer
       </H1Component>
+      <Divider />
       <div className="grid gap-10 m-20 relative">
         <Input
           type="text"
