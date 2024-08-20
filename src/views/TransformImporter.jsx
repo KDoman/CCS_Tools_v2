@@ -74,13 +74,12 @@ export const TransformImporter = () => {
         setUsername("");
         setPassword("");
       } else if (response.status === 420) {
-        setIsError("Login error, try again");
-        return;
+        throw new Error("Login error, try again");
       } else if (response.status === 503) {
-        alert("Server error, please contact with developer");
+        throw new Error("Server error, please contact with developer");
       }
     } catch (err) {
-      alert("Server error, please contact with developer");
+      setIsError(err.message);
     } finally {
       setIsFileUploading(false);
     }

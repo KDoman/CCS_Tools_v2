@@ -14,6 +14,7 @@ export const SiloshotGenerator = () => {
   const [fileName, setFileName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [progressMessage, setProgressMessage] = useState("");
 
   const { isError, setIsError, isSuccess, setIsSuccess } = useClearNotation();
 
@@ -31,6 +32,7 @@ export const SiloshotGenerator = () => {
 
     try {
       setIsLoading(true);
+      setProgressMessage("Loading");
       const req = await fetch(
         "https://karolkrusz-siloshot-generator.hf.space/generate-images/",
         {
@@ -39,6 +41,7 @@ export const SiloshotGenerator = () => {
         }
       );
       if (req.ok) {
+        setProgressMessage("Successful photo production, downloading...");
         const blob = await req.blob();
         const downloadUrl = URL.createObjectURL(blob);
         const link = document.createElement("a");
@@ -49,16 +52,19 @@ export const SiloshotGenerator = () => {
         document.body.removeChild(link);
         URL.revokeObjectURL(downloadUrl);
         setIsSuccess(true);
-      } else if (req.status === 420 || req.status === 419) {
+      } else if (req.status === 420) {
         throw new Error("Login error, check credentials");
+      } else if (req.status === 419) {
+        throw new Error("Wrong URL path");
       } else {
-        throw new Error("Contact with developer");
+        throw new Error("Error, please contact with developer");
       }
     } catch (err) {
       setIsError(true);
       setErrorMessage(err.message);
     } finally {
       setIsLoading(false);
+      setProgressMessage("");
     }
   }
 
@@ -96,7 +102,10 @@ export const SiloshotGenerator = () => {
         <Button isDisabled={isLoading} onClick={sendRequest}>
           Send
         </Button>
-        {isLoading && <Spinner label="Loading" color="default" size="lg" />}
+        {isLoading && (
+          <Spinner label={progressMessage} color="default" size="lg" />
+        )}
+
         <AnimatePresence>
           {isSuccess && (
             <motion.div
