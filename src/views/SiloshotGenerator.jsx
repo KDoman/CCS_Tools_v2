@@ -1,10 +1,11 @@
 import { H1Component } from "../components/H1Component";
-import { Button, Divider, Input } from "@nextui-org/react";
+import { Button, Divider, Input, Spinner } from "@nextui-org/react";
 import CAMERA from "../assets/camera.svg";
 import { useState } from "react";
 import { SuccessMessage } from "../components/SuccessMessage";
 import { AnimatePresence, motion } from "framer-motion";
 import { ErrorMessage } from "../components/ErrorMessage";
+import { useClearNotation } from "../hooks/useClearNotation";
 
 export const SiloshotGenerator = () => {
   const [login, setLogin] = useState("");
@@ -12,46 +13,52 @@ export const SiloshotGenerator = () => {
   const [url, setUrl] = useState("");
   const [fileName, setFileName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
+
+  const { isError, setIsError, isSuccess, setIsSuccess } = useClearNotation();
 
   async function sendRequest() {
-    if (!login || !password || !url) {
-      setErrorMessage("Check credientals, try again");
+    if (!login || !password || !url || !fileName) {
       setIsError(true);
-      setTimeout(() => {
-        setIsError(false);
-      }, 3000);
+      setErrorMessage("Check credientals, try again");
       return;
     }
-
     const formData = new FormData();
-    formData.append("username", "howardmiller@intiaro.com");
-    formData.append("password", "MilleR2022!");
-    formData.append(
-      "product_url",
-      "https://portal.intiaro.com/reviewer-product-details/16795"
-    );
-    formData.append("product_name", "testKacper");
-    const req = await fetch(
-      "https://karolkrusz-siloshot-generator.hf.space/generate-imagesss/",
-      {
-        method: "POST",
-        body: formData,
+    formData.append("username", login);
+    formData.append("password", password);
+    formData.append("product_url", url);
+    formData.append("product_name", fileName);
+
+    try {
+      setIsLoading(true);
+      const req = await fetch(
+        "https://karolkrusz-siloshot-generator.hf.space/generate-images/",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      if (req.ok) {
+        const blob = await req.blob();
+        const downloadUrl = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = downloadUrl;
+        link.download = `${fileName}_images.zip`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(downloadUrl);
+        setIsSuccess(true);
+      } else if (req.status === 420 || req.status === 419) {
+        throw new Error("Login error, check credentials");
+      } else {
+        throw new Error("Contact with developer");
       }
-    );
-    if (req.ok) {
-      setIsSuccess(true);
-      setTimeout(() => {
-        setIsSuccess(false);
-      }, 3000);
-    } else {
+    } catch (err) {
       setIsError(true);
-      setErrorMessage("Error 404");
-      setTimeout(() => {
-        setIsError(false);
-      }, 3000);
+      setErrorMessage(err.message);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -62,11 +69,34 @@ export const SiloshotGenerator = () => {
       </H1Component>
       <Divider />
       <form className="grid gap-10 m-20 relative">
-        <Input type="text" label="Login" />
-        <Input type="password" label="Password" />
-        <Input type="text" label="URL" />
-        <Input type="text" label="File name" />
-        <Button onClick={sendRequest}>Send</Button>
+        <Input
+          type="text"
+          label="Login"
+          value={login}
+          onChange={(e) => setLogin(e.target.value)}
+        />
+        <Input
+          type="password"
+          label="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Input
+          type="text"
+          label="URL"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+        />
+        <Input
+          type="text"
+          label="File name"
+          value={fileName}
+          onChange={(e) => setFileName(e.target.value)}
+        />
+        <Button isDisabled={isLoading} onClick={sendRequest}>
+          Send
+        </Button>
+        {isLoading && <Spinner label="Loading" color="default" size="lg" />}
         <AnimatePresence>
           {isSuccess && (
             <motion.div
@@ -74,7 +104,7 @@ export const SiloshotGenerator = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: [1, 1.1] }}
             >
-              <SuccessMessage>Ok</SuccessMessage>
+              <SuccessMessage>Success</SuccessMessage>
             </motion.div>
           )}
         </AnimatePresence>
