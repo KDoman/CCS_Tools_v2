@@ -95,14 +95,14 @@ export const TransformImporter = () => {
           type="text"
           value={username}
           label="Login"
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setUsername(e.target.value.trim())}
           isDisabled={isFileUploading}
         />
         <Input
           type="password"
           label="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value.trim())}
           isDisabled={isFileUploading}
         />
         <UploadFileDiv
