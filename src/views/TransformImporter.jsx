@@ -54,9 +54,8 @@ export const TransformImporter = () => {
     try {
       setIsFileUploading(true);
       const formData = new FormData();
-      formData.append("file", file); // Dodaj plik do FormData
+      formData.append("file", file);
 
-      // Dodanie dodatkowych danych
       formData.append("username", username);
       formData.append("password", password);
       formData.append("transforms", transforms);
@@ -97,14 +96,20 @@ export const TransformImporter = () => {
           value={username}
           label="Login"
           onChange={(e) => setUsername(e.target.value)}
+          isDisabled={isFileUploading}
         />
         <Input
           type="password"
           label="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          isDisabled={isFileUploading}
         />
-        <UploadFileDiv onChange={handleFileUpload} width="w-full" />
+        <UploadFileDiv
+          onChange={handleFileUpload}
+          width="w-full"
+          isDisabled={isFileUploading}
+        />
 
         <Button
           isDisabled={isButtonDisabled || isFileUploading}
@@ -135,9 +140,7 @@ export const TransformImporter = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: [1, 1.1] }}
             >
-              <SuccessMessage>
-                Transformy zostały dodane pomyślnie
-              </SuccessMessage>
+              <SuccessMessage>Success</SuccessMessage>
             </motion.div>
           )}
         </AnimatePresence>
