@@ -22,7 +22,7 @@ export function JpegToPngConverter() {
       />
       <Divider />
       <Input
-        type="text"
+        variant="bordered"
         label="File name (optional)"
         className="w-1/2 mx-auto my-10"
         onChange={(e) => setFileName(e.target.value)}

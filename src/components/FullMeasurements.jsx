@@ -22,6 +22,7 @@ export function FullMeasurements({
   return (
     <DivCardMeasurements>
       <Input
+        variant="bordered"
         type="text"
         label="Full Measurements"
         size="sm"

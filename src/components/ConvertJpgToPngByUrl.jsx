@@ -35,21 +35,13 @@ export function ConvertJpgToPngByUrl({
       </H1Component>
       <div className="flex justify-center items-center py-10 w-1/2 mx-auto">
         <Input
+          variant="bordered"
           size="sm"
           type="text"
           label="URL"
           isDisabled={isConvertedByFile}
           onChange={onChangeInput}
           value={url}
-          classNames={{
-            input: ["bg-[#d8d6d6] hover:bg-[#d8d6d6] active:bg-[#d8d6d6]"],
-            innerWrapper: [
-              "bg-[#d8d6d6] hover:bg-[#d8d6d6] active:bg-[#d8d6d6]",
-            ],
-            inputWrapper: [
-              "bg-[#d8d6d6] hover:bg-[#d8d6d6] active:bg-[#d8d6d6]",
-            ],
-          }}
         />
       </div>
 

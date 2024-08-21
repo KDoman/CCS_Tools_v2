@@ -92,6 +92,7 @@ export const TransformImporter = () => {
       <Divider />
       <div className="grid gap-10 m-20 relative">
         <Input
+          variant="bordered"
           type="text"
           value={username}
           label="Login"
@@ -99,6 +100,7 @@ export const TransformImporter = () => {
           isDisabled={isFileUploading}
         />
         <Input
+          variant="bordered"
           type="password"
           label="Password"
           value={password}

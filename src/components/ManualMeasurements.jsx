@@ -25,6 +25,7 @@ export function ManualMeasurements({ setValueX, setValueZ, setValueY }) {
         Manual measurements
       </Switch>
       <Input
+        variant="bordered"
         type="number"
         label="X"
         size="sm"
@@ -32,6 +33,7 @@ export function ManualMeasurements({ setValueX, setValueZ, setValueY }) {
         ref={inputRefX}
       />
       <Input
+        variant="bordered"
         type="number"
         label="Y"
         size="sm"
@@ -39,6 +41,7 @@ export function ManualMeasurements({ setValueX, setValueZ, setValueY }) {
         ref={inputRefY}
       />
       <Input
+        variant="bordered"
         type="number"
         label="Z"
         size="sm"

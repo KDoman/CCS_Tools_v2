@@ -30,6 +30,7 @@ export function IconAndThumbnail() {
         Create by URL
       </H1Component>
       <Input
+        variant="bordered"
         type="text"
         label="Paste URL"
         className="w-1/2 mx-auto my-10"

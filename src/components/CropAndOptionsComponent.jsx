@@ -42,6 +42,7 @@ export function CropAndOptionsComponent({ pngUrl, urlImage }) {
         White background
       </Switch>
       <Input
+        variant="bordered"
         type="text"
         label="File name (optional)"
         className="w-1/2 mx-auto my-10"

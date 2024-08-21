@@ -76,6 +76,7 @@ export const SiloshotGenerator = () => {
       <Divider />
       <form className="grid gap-10 m-20 relative">
         <Input
+          variant="bordered"
           type="text"
           label="Login"
           value={login}
@@ -83,6 +84,7 @@ export const SiloshotGenerator = () => {
           isDisabled={isLoading}
         />
         <Input
+          variant="bordered"
           type="password"
           label="Password"
           value={password}
@@ -90,6 +92,7 @@ export const SiloshotGenerator = () => {
           isDisabled={isLoading}
         />
         <Input
+          variant="bordered"
           type="text"
           label="URL"
           value={url}
@@ -97,6 +100,7 @@ export const SiloshotGenerator = () => {
           isDisabled={isLoading}
         />
         <Input
+          variant="bordered"
           type="text"
           label="File name"
           value={fileName}
