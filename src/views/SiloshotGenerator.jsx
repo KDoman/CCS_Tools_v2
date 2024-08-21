@@ -79,25 +79,29 @@ export const SiloshotGenerator = () => {
           type="text"
           label="Login"
           value={login}
-          onChange={(e) => setLogin(e.target.value)}
+          onChange={(e) => setLogin(e.target.value.trim())}
+          isDisabled={isLoading}
         />
         <Input
           type="password"
           label="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value.trim())}
+          isDisabled={isLoading}
         />
         <Input
           type="text"
           label="URL"
           value={url}
-          onChange={(e) => setUrl(e.target.value)}
+          onChange={(e) => setUrl(e.target.value.trim())}
+          isDisabled={isLoading}
         />
         <Input
           type="text"
           label="File name"
           value={fileName}
           onChange={(e) => setFileName(e.target.value)}
+          isDisabled={isLoading}
         />
         <Button isDisabled={isLoading} onClick={sendRequest}>
           Send
