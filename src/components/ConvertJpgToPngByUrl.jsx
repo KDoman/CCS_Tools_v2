@@ -41,6 +41,15 @@ export function ConvertJpgToPngByUrl({
           isDisabled={isConvertedByFile}
           onChange={onChangeInput}
           value={url}
+          classNames={{
+            input: ["bg-[#d8d6d6] hover:bg-[#d8d6d6] active:bg-[#d8d6d6]"],
+            innerWrapper: [
+              "bg-[#d8d6d6] hover:bg-[#d8d6d6] active:bg-[#d8d6d6]",
+            ],
+            inputWrapper: [
+              "bg-[#d8d6d6] hover:bg-[#d8d6d6] active:bg-[#d8d6d6]",
+            ],
+          }}
         />
       </div>
 

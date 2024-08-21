@@ -3,12 +3,12 @@ import { ListComponentSideBar } from "./ListComponentSideBar";
 
 export function SideBar() {
   return (
-    <div className=" border-r-1 border-solid border-[var(--border-and-shadow-color)] row-span-full w-full">
+    <div className="row-start-1 row-end-5 bg-slate-50 rounded-xl overflow-hidden">
       <div className=" sticky top-[20px]">
         <img
           src={CSS_Logo}
           alt="CSS Tools logo"
-          className="max-w-[150px] mx-auto"
+          className="max-w-[150px] mx-auto "
         />
         <ListComponentSideBar />
       </div>

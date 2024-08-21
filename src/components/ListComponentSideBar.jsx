@@ -7,7 +7,7 @@ export function ListComponentSideBar() {
   const [activeTab, setActiveTab] = useGetCurrentTab(TABS);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
       {TABS.map((tab) => (
         <Link to={tab.path} key={tab.id}>
           <button
@@ -18,7 +18,7 @@ export function ListComponentSideBar() {
             {activeTab === tab.id && (
               <motion.span
                 layoutId="bubble"
-                className={`absolute inset-0 z-10  mix-blend-multiply bg-zinc-200`}
+                className={`absolute inset-0 z-10  mix-blend-multiply bg-[rgb(216,214,214)]`}
                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
               />
             )}
