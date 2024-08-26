@@ -6,7 +6,7 @@ const AnimatedOutlet = () => {
   const element = useOutlet();
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" initial={false}>
       {element && (
         <motion.div
           key={location.pathname}
