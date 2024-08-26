@@ -3,8 +3,8 @@ import { ListComponentSideBar } from "./ListComponentSideBar";
 
 export function SideBar() {
   return (
-    <div className="row-start-1 row-end-5 bg-slate-50 rounded-xl overflow-hidden">
-      <div className=" sticky top-[20px]">
+    <div className="row-start-1 row-end-5 bg-slate-50 rounded-xl  sticky top-5">
+      <div className="sticky top-5">
         <img
           src={CSS_Logo}
           alt="CSS Tools logo"
