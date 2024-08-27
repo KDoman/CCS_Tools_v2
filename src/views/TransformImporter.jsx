@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { H1Component } from "../components/H1Component";
 import TRANSFORM_IMPORTER_ICON from "../assets/transform_importer.svg";
 import { Button } from "@nextui-org/button";
@@ -17,6 +17,8 @@ export const TransformImporter = () => {
   const [file, setFile] = useState(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isFileUploading, setIsFileUploading] = useState(false);
+
+  const fileInputRef = useRef(null);
 
   const { isError, setIsError, isSuccess, setIsSuccess } = useClearNotation();
 
@@ -70,11 +72,14 @@ export const TransformImporter = () => {
 
       if (response.ok) {
         setIsSuccess(true);
-        setUsername("");
-        setPassword("");
+        setFile(null);
+        setTransforms(null);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
       } else if (response.status === 420) {
         throw new Error("Login error, try again");
-      } else if (response.status === 503) {
+      } else {
         throw new Error("Server error, please contact with developer");
       }
     } catch (err) {
@@ -111,6 +116,7 @@ export const TransformImporter = () => {
           onChange={handleFileUpload}
           width="w-full"
           isDisabled={isFileUploading}
+          ref={fileInputRef}
         />
 
         <Button
