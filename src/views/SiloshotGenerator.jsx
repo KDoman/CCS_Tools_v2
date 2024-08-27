@@ -21,7 +21,7 @@ export const SiloshotGenerator = () => {
   async function sendRequest() {
     if (!login || !password || !url || !fileName) {
       setIsError(true);
-      setErrorMessage("Check credientals, try again");
+      setErrorMessage("The input data must not be empty");
       return;
     }
     const formData = new FormData();

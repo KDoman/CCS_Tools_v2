@@ -47,7 +47,7 @@ export const TransformImporter = () => {
 
   const handleSubmit = async () => {
     if (!file || !username || !password) {
-      setIsError("Check login credentials");
+      setIsError("The input data must not be empty!");
       return;
     }
 
