@@ -35,7 +35,37 @@ export const ChoicesScrapper = () => {
   };
 
   const downloadXLSX = () => {
-    console.log(result);
+    const arrayOfArrays = Object.values(result);
+    const keys = Object.keys(result);
+
+    let finalArray = [["ID", "Variable_slug", "Choice_name", "Choice_slug"]];
+
+    for (let i = 0; i < keys.length; i++) {
+      const id = keys[i];
+      const rows = arrayOfArrays[i];
+
+      rows.forEach((row) => {
+        finalArray.push([id, row[0], row[1], row[2]]);
+      });
+    }
+    const ws = XLSX.utils.aoa_to_sheet(finalArray);
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+    const xlsx = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+
+    const blob = new Blob([xlsx], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8;",
+    });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "data_file.xlsx";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   const sendData = async () => {
@@ -56,7 +86,7 @@ export const ChoicesScrapper = () => {
           body: JSON.stringify({
             username: login,
             password,
-            product_id: idArray,
+            product_ids: idArray,
           }),
         }
       );
