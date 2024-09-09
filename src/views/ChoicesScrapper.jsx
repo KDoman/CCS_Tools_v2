@@ -40,17 +40,12 @@ export const ChoicesScrapper = () => {
     }
   };
 
-  const downloadXLSX = () => {
-    const errorsValue = Object.values(...errorIdArray);
-    const errorsKey = Object.keys(...errorIdArray);
-
+  const downloadXLSX = () => {    
     let finalErrorArray = [["ID", "Error_message"]];
-    for (let i = 0; i < errorsKey.length; i++) {
-      const id = errorsKey[i];
-      const rows = errorsValue[i];
-      rows.forEach((row) => {
-        finalErrorArray.push([id, row[0], row[1]]);
-      });
+    for (let i = 0; i < errorIdArray.length; i++) {
+      const id = errorIdArray[i].id;
+      const rows = errorIdArray[i].message;
+      finalErrorArray.push([id, rows]);
     }
 
     const arrayOfArrays = Object.values(result);
