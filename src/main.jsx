@@ -13,6 +13,7 @@ import { StaticView } from "./components/StaticView.jsx";
 import { HomePage } from "./views/HomePage.jsx";
 import { TransformImporter } from "./views/TransformImporter.jsx";
 import { SiloshotGenerator } from "./views/SiloshotGenerator.jsx";
+import { ChoicesScrapper } from "./views/ChoicesScrapper.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: "Ghost", element: <Ghost /> },
       { path: "Transform_importer", element: <TransformImporter /> },
       { path: "Siloshot_generator", element: <SiloshotGenerator /> },
+      { path: "Choices_scrapper", element: <ChoicesScrapper /> },
     ],
   },
 ]);
