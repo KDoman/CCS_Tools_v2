@@ -9,6 +9,7 @@ import { SuccessMessage } from "../components/SuccessMessage";
 import { motion, AnimatePresence } from "framer-motion";
 import { Divider, Spinner } from "@nextui-org/react";
 import { useClearNotation } from "../hooks/useClearNotation";
+import { CustomSnippet } from "../components/CustomSnippet";
 
 export const TransformImporter = () => {
   const [transforms, setTransforms] = useState(null);
@@ -17,6 +18,7 @@ export const TransformImporter = () => {
   const [file, setFile] = useState(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isFileUploading, setIsFileUploading] = useState(false);
+  const [mastrixIdList, setMatrixIdList] = useState([]);
 
   const fileInputRef = useRef(null);
 
@@ -54,6 +56,7 @@ export const TransformImporter = () => {
     }
 
     try {
+      setMatrixIdList([]);
       setIsFileUploading(true);
       const formData = new FormData();
       formData.append("file", file);
@@ -71,6 +74,9 @@ export const TransformImporter = () => {
       );
 
       if (response.ok) {
+        await response
+          .json()
+          .then((data) => setMatrixIdList(data.matrixs_list));
         setIsSuccess(true);
         setFile(null);
         setTransforms(null);
@@ -125,6 +131,18 @@ export const TransformImporter = () => {
         >
           Wyślij
         </Button>
+
+        {mastrixIdList && (
+          <div className="mx-auto w-full justify-around flex flex-wrap">
+            {mastrixIdList.map((matrix) => {
+              return (
+                <>
+                  <CustomSnippet key={matrix}>{matrix}</CustomSnippet>
+                </>
+              );
+            })}
+          </div>
+        )}
 
         {isFileUploading && (
           <Spinner color="default" size="lg" label="Loading..." />
