@@ -40,7 +40,7 @@ export const ChoicesScrapper = () => {
     }
   };
 
-  const downloadXLSX = () => {    
+  const downloadXLSX = () => {
     let finalErrorArray = [["ID", "Error_message"]];
     for (let i = 0; i < errorIdArray.length; i++) {
       const id = errorIdArray[i].id;
@@ -50,12 +50,14 @@ export const ChoicesScrapper = () => {
 
     const arrayOfArrays = Object.values(result);
     const keys = Object.keys(result);
-    let finalArray = [["ID", "Variable_slug", "Choice_name", "Choice_slug"]];
+    let finalArray = [
+      ["ID", "Variable_name", "Variable_slug", "Choice_name", "Choice_slug"],
+    ];
     for (let i = 0; i < keys.length; i++) {
       const id = keys[i];
       const rows = arrayOfArrays[i];
       rows.forEach((row) => {
-        finalArray.push([id, row[0], row[1], row[2]]);
+        finalArray.push([id, row[0], row[1], row[2], row[3]]);
       });
     }
 
@@ -101,7 +103,6 @@ export const ChoicesScrapper = () => {
       );
       if (req.ok) {
         req.json().then((res) => {
-          console.log(res);
           setResult(res.data);
           setErrorIdArray(res.errors);
         });
