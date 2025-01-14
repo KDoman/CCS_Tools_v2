@@ -5,6 +5,7 @@ import ICON_AND_THUMB_ICON from "../assets/icon.svg";
 // import GHOST_ICON from "../assets/ghost.svg";
 import TRANSFORM_IMPORTER_ICON from "../assets/transform_importer.svg";
 import CAMERA from "../assets/camera.svg";
+import SILOKRAVET from "../assets/siloKravet.svg";
 import CHOICES from "../assets/choices.svg";
 
 export const TABS = [
@@ -51,6 +52,12 @@ export const TABS = [
     img: CHOICES,
     path: "/Choices_scrapper",
   },
+  {
+    id: "siloshot_kravet_generator",
+    label: "Kravet Siloshot",
+    img: SILOKRAVET,
+    path: "/Siloshot_kravet_generator",
+  },
 ];
 
 export const TABS_WITHOUT_HOMEPAGE = [
@@ -95,5 +102,11 @@ export const TABS_WITHOUT_HOMEPAGE = [
     label: "Choices scrapper",
     img: CHOICES,
     path: "/Choices_scrapper",
+  },
+  {
+    id: "siloshot_kravet_generator",
+    label: "Kravet Siloshot",
+    img: SILOKRAVET,
+    path: "/Siloshot_kravet_generator",
   },
 ];
