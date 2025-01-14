@@ -26,7 +26,6 @@ export const KravetSiloshot = () => {
 
     try {
       let errors = "";
-
       setIsLoading(true);
       const zip = new JSZip();
       const listOfFabrics = fabrics.split(",").map((fabric) => fabric.trim());
@@ -55,7 +54,9 @@ export const KravetSiloshot = () => {
         }
       }
 
-      zip.file("Error list.txt", errors);
+      if (errors) {
+        zip.file("Error list.txt", errors);
+      }
       const combinedZip = await zip.generateAsync({ type: "blob" });
 
       const downloadUrl = URL.createObjectURL(combinedZip);
