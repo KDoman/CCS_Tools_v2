@@ -9,7 +9,7 @@ export function ListComponentSideBar() {
   return (
     <div className="flex flex-col ">
       {TABS.map((tab) => (
-        <Link to={tab.path} key={tab.id}>
+        <Link to={tab.path} key={tab.id} data-testid={tab.id}>
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}

@@ -22,9 +22,10 @@ export function ManualMeasurements({ setValueX, setValueZ, setValueY }) {
   return (
     <DivCardMeasurements>
       <Switch size="sm" color="success" onChange={onButtonChange}>
-        Manual measurements
+        <span id="manual_measurements_label">Manual measurements</span>
       </Switch>
       <Input
+        id="manualX"
         variant="bordered"
         type="number"
         label="X"
@@ -33,6 +34,7 @@ export function ManualMeasurements({ setValueX, setValueZ, setValueY }) {
         ref={inputRefX}
       />
       <Input
+        id="manualY"
         variant="bordered"
         type="number"
         label="Y"
@@ -41,6 +43,7 @@ export function ManualMeasurements({ setValueX, setValueZ, setValueY }) {
         ref={inputRefY}
       />
       <Input
+        id="manualZ"
         variant="bordered"
         type="number"
         label="Z"

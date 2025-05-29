@@ -15,7 +15,9 @@ export function NoRotationDefault({ valueX }) {
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px]">
         <p>Kind Left</p>
         <CustomSnippet width={"w-[80%]"} imgVariant={1}>
-          {getKindNegativeResult(valueX)}
+          <span id="no_rotation_kind_left_result">
+            {getKindNegativeResult(valueX)}
+          </span>
         </CustomSnippet>
       </ShadowDiv>
       <Divider className="col-span-full" />
@@ -23,7 +25,9 @@ export function NoRotationDefault({ valueX }) {
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px]">
         <p>Kind Right</p>
         <CustomSnippet width={"w-[80%]"} imgVariant={1}>
-          {getKindPositiveResult(valueX)}
+          <span id="no_rotation_kind_right_result">
+            {getKindPositiveResult(valueX)}
+          </span>
         </CustomSnippet>
       </ShadowDiv>
     </ShadowDiv>

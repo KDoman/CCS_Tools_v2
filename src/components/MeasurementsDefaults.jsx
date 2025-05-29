@@ -19,7 +19,7 @@ export function MeasurementsDefaults({ valueX, valueZ }) {
           size="sm"
           onChange={() => setIsRotationOn((prev) => !prev)}
         >
-          Rotation
+          <span id="rotation_switch">Rotation</span>
         </Switch>
         <MeasurementsDefaultsModal />
       </div>

@@ -18,13 +18,17 @@ export function RotationDefaults({ valueX, valueZ }) {
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px]">
         <p>Kind Left</p>
         <CustomSnippet imgVariant={3} width={"w-[80%]"}>
-          {getKindNegativeResult(valueZ)}
+          <span id="rotation_kind_left_first">
+            {getKindNegativeResult(valueZ)}
+          </span>
         </CustomSnippet>
       </ShadowDiv>
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px]">
         <p>Kind Right</p>
         <CustomSnippet imgVariant={1} width={"w-[80%]"}>
-          {getKindPositiveResult(valueX)}
+          <span id="rotation_kind_right_first">
+            {getKindPositiveResult(valueX)}
+          </span>
         </CustomSnippet>
       </ShadowDiv>
       <Divider className="row-start-3 col-span-full" />
@@ -35,13 +39,17 @@ export function RotationDefaults({ valueX, valueZ }) {
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px] row-start-4">
         <p>Kind Left</p>
         <CustomSnippet imgVariant={1} width={"w-[80%]"}>
-          {getKindNegativeResult(valueX)}
+          <span id="rotation_kind_left_second">
+            {getKindNegativeResult(valueX)}
+          </span>
         </CustomSnippet>
       </ShadowDiv>
       <ShadowDiv className="flex flex-col justify-evenly items-center w-[200px] h-[200px] row-start-5">
         <p>Kind Right</p>
         <CustomSnippet imgVariant={3} width={"w-[80%]"}>
-          {getKindNegativeResult(valueZ)}
+          <span id="rotation_kind_right_second">
+            {getKindNegativeResult(valueZ)}
+          </span>
         </CustomSnippet>
       </ShadowDiv>
     </ShadowDiv>

@@ -10,13 +10,13 @@ export function MeasurementsResult({ valueX, valueY, valueZ }) {
           <p className="mb-3">Result</p>
           <div className="flex flex-col gap-4">
             <CustomSnippet imgVariant={1} width="full">
-              {getConvertInchesToCm(valueX)}
+              <span id="resultX">{getConvertInchesToCm(valueX)}</span>
             </CustomSnippet>
             <CustomSnippet imgVariant={2} width="full">
-              {getConvertInchesToCm(valueY)}
+              <span id="resultY">{getConvertInchesToCm(valueY)}</span>
             </CustomSnippet>
             <CustomSnippet imgVariant={3} width="full">
-              {getConvertInchesToCm(valueZ)}
+              <span id="resultZ">{getConvertInchesToCm(valueZ)}</span>
             </CustomSnippet>
           </div>
         </DivCardMeasurements>
